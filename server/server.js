@@ -9,10 +9,13 @@ const { bgCyan } = require("colors");
 const bcrypt = require("bcrypt");
 require("colors");
 const connectDb = require("./config/config");
+
 //dotenv config
 dotenv.config();
+
 //db config
 connectDb();
+
 //rest object
 const app = express();
 
@@ -29,9 +32,4 @@ app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/bills", require("./routes/billsRoutes"));
 
-//port
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server Running On Port ${PORT}`.bgCyan.white);
-});
+module.exports = app;
