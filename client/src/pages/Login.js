@@ -13,7 +13,10 @@ const Login = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const res = await axios.post("/api/users/login", value);
+      const res = await axios.post(
+        "https://deploy-serverss.vercel.app/api/users/login",
+        value
+      );
       // Storing the user details in localStorage -> we can use sessions and cookies otherwise
 
       localStorage.setItem("auth", JSON.stringify(res.data));
@@ -52,7 +55,10 @@ const Login = () => {
       }}
     >
       <img
-        src={process.env.PUBLIC_URL + "/images/Banner1.jpg"}
+        src={
+          process.env.PUBLIC_URL +
+          "https://deploy-serverss.vercel.app/images/Banner1.jpg"
+        }
         alt="Login Image"
         style={{ width: "900px", height: "600px", marginRight: "20px" }}
       />
