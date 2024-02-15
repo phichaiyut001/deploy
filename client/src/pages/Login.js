@@ -55,7 +55,10 @@ const Login = () => {
       }}
     >
       <img
-        src={process.env.PUBLIC_URL + "/images/Banner1.jpg"}
+        src={
+          process.env.PUBLIC_URL +
+          "https://deploy-serverss.vercel.app/images/Banner1.jpg"
+        }
         alt="Login Image"
         style={{ width: "900px", height: "600px", marginRight: "20px" }}
       />
