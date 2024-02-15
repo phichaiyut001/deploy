@@ -56,7 +56,7 @@ const ItemList = ({ item }) => {
         cover={
           <img
             alt={item.name}
-            src={`/images/${item.image}`}
+            src={`https://deploy-serverss.vercel.app/images/${item.image}`}
             style={{ height: 200 }}
           />
         }

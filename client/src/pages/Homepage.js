@@ -12,28 +12,28 @@ const Homepage = () => {
     {
       name: "fish",
       fname: "ปลาทอด",
-      imageUrl: "/images/Fish.png",
+      imageUrl: "https://deploy-serverss.vercel.app/images/Fish.png",
     },
     {
       name: "rice",
       fname: "ข้าว",
-      imageUrl: "/images/Rice.png",
+      imageUrl: "https://deploy-serverss.vercel.app/images/Rice.png",
     },
     {
       name: "etc",
       fname: "ของทอด",
-      imageUrl: "/images/snack.png",
+      imageUrl: "https://deploy-serverss.vercel.app/images/snack.png",
     },
     {
       name: "drinks",
       fname: "เครื่องดื่ม",
-      imageUrl: "/images/Drink.png",
+      imageUrl: "https://deploy-serverss.vercel.app/images/Drink.png",
     },
 
     {
       name: "chili",
       fname: "น้ำพริก",
-      imageUrl: "/images/Chill.png",
+      imageUrl: "https://deploy-serverss.vercel.app/images/Chill.png",
     },
   ];
   const dispatch = useDispatch();
