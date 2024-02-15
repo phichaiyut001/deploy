@@ -35,7 +35,9 @@ const CartPage = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const { data } = await axios.get("/api/items/get-item");
+      const { data } = await axios.get(
+        "https://deploy-serverss.vercel.app/api/items/get-item"
+      );
       const itemWithIndex = data.map((items, index) => ({
         ...items,
         index: index + 1,
@@ -202,7 +204,10 @@ const CartPage = () => {
           const changeAmount = parseFloat(value.change) - subTotal;
           setChangeAmount(changeAmount);
 
-          await axios.post("/api/bills/add-bills", newObject);
+          await axios.post(
+            "https://deploy-serverss.vercel.app/api/bills/add-bills",
+            newObject
+          );
           dispatch({
             type: "CLEAR_CART",
           });
@@ -221,7 +226,10 @@ const CartPage = () => {
           change: 0,
         };
 
-        await axios.post("/api/bills/add-bills", newObject);
+        await axios.post(
+          "https://deploy-serverss.vercel.app/api/bills/add-bills",
+          newObject
+        );
         dispatch({
           type: "CLEAR_CART",
         });
@@ -243,9 +251,12 @@ const CartPage = () => {
           const updatedStock = itemData.stock - quantity;
 
           // ส่ง request ไปยัง API สำหรับการอัพเดต stock ของสินค้า
-          await axios.put(`/api/items/edit-item/${_id}`, {
-            stock: updatedStock,
-          });
+          await axios.put(
+            `https://deploy-serverss.vercel.app/api/items/edit-item/${_id}`,
+            {
+              stock: updatedStock,
+            }
+          );
 
           // สร้างอ็อบเจ็กต์ใหม่ที่มีจำนวนสินค้าในตะกร้าล่าสุด
           return {

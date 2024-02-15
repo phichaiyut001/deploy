@@ -24,7 +24,9 @@ const Items = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const { data } = await axios.get("/api/items/get-item");
+      const { data } = await axios.get(
+        "https://deploy-serverss.vercel.app/api/items/get-item"
+      );
       const itemWithIndex = data.map((items, index) => ({
         ...items,
         index: index + 1,
@@ -61,7 +63,10 @@ const Items = () => {
           type: "SHOW_LOADING",
         });
 
-        await axios.post("/api/items/delete-item", { itemId: record._id });
+        await axios.post(
+          "https://deploy-serverss.vercel.app/api/items/delete-item",
+          { itemId: record._id }
+        );
 
         Swal.fire({
           title: "Deleted!",
@@ -150,11 +155,17 @@ const Items = () => {
 
       if (editItem === null) {
         // Add Item
-        await axios.post("/api/items/add-item", formData);
+        await axios.post(
+          "https://deploy-serverss.vercel.app/api/items/add-item",
+          formData
+        );
         message.success("Item Added Successfully");
       } else {
         // Update Item using PUT request
-        await axios.put(`/api/items/edit-item/${editItem._id}`, formData);
+        await axios.put(
+          `https://deploy-serverss.vercel.app/api/items/edit-item/${editItem._id}`,
+          formData
+        );
         message.success("Item Update Successfully");
       }
 

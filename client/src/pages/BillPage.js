@@ -21,7 +21,9 @@ const BillPage = () => {
         type: "SHOW_LOADING",
       });
 
-      const { data } = await axios.get("/api/bills/get-bills");
+      const { data } = await axios.get(
+        "https://deploy-serverss.vercel.app/api/bills/get-bills"
+      );
 
       // เพิ่ม index ให้กับแต่ละบิล
       const billsWithIndex = data.map((bill, index) => ({

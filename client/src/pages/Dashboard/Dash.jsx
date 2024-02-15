@@ -63,7 +63,9 @@ const Dash = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const { data } = await axios.get("/api/users/get-users");
+      const { data } = await axios.get(
+        "https://deploy-serverss.vercel.app/api/users/get-users"
+      );
       const usersWithIndex = data.map((users, index) => ({
         ...users,
         index: index + 1,
@@ -82,7 +84,9 @@ const Dash = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const { data } = await axios.get("/api/items/get-item");
+      const { data } = await axios.get(
+        "https://deploy-serverss.vercel.app/api/items/get-item"
+      );
       const itemWithIndex = data.map((items, index) => ({
         ...items,
       }));
@@ -100,7 +104,9 @@ const Dash = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const { data } = await axios.get("/api/bills/get-bills");
+      const { data } = await axios.get(
+        "https://deploy-serverss.vercel.app/api/bills/get-bills"
+      );
       const billsWithIndex = data.map((bill, index) => ({
         ...bill,
       }));

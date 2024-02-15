@@ -14,7 +14,10 @@ const Register = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      await axios.post("/api/users/register", value);
+      await axios.post(
+        "https://deploy-serverss.vercel.app/api/users/register",
+        value
+      );
       message.success("Register SuccessFully");
       navigate("/login");
       dispatch({ type: "HIDE_LOADING" });

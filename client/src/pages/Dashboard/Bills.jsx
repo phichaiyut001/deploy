@@ -21,7 +21,9 @@ const Bills = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const { data } = await axios.get("/api/bills/get-bills");
+      const { data } = await axios.get(
+        "https://deploy-serverss.vercel.app/api/bills/get-bills"
+      );
       const billsWithIndex = data.map((bill, index) => ({
         ...bill,
         index: index + 1,

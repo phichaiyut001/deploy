@@ -19,7 +19,9 @@ const User = () => {
       dispatch({
         type: "SHOW_LOADING",
       });
-      const { data } = await axios.get("/api/users/get-users");
+      const { data } = await axios.get(
+        "https://deploy-serverss.vercel.app/api/users/get-users"
+      );
       const usersWithIndex = data.map((users, index) => ({
         ...users,
         index: index + 1,
@@ -58,7 +60,10 @@ const User = () => {
           type: "SHOW_LOADING",
         });
 
-        await axios.post("/api/users/delete-users", { UserId: record._id });
+        await axios.post(
+          "https://deploy-serverss.vercel.app/api/users/delete-users",
+          { UserId: record._id }
+        );
 
         Swal.fire({
           title: "Deleted!",
@@ -130,11 +135,17 @@ const User = () => {
 
       if (editUsers === null) {
         // Add Item
-        await axios.post("/api/users/register", requestData);
+        await axios.post(
+          "https://deploy-serverss.vercel.app/api/users/register",
+          requestData
+        );
         message.success("Register SuccessFully");
       } else {
         // Update Item using PUT request
-        await axios.put(`/api/users/edit-users/${editUsers._id}`, requestData);
+        await axios.put(
+          `https://deploy-serverss.vercel.app/api/users/edit-users/${editUsers._id}`,
+          requestData
+        );
         message.success("Users Update Successfully");
       }
       setPopupModal(false);
@@ -160,7 +171,9 @@ const User = () => {
 
         {popupModal && (
           <Modal
-            title={`${editUsers !== null ? "แก้ไขข้อมูลผู้ใช้งาน " : "เพิ่มผู้ใช้งาน"}`}
+            title={`${
+              editUsers !== null ? "แก้ไขข้อมูลผู้ใช้งาน " : "เพิ่มผู้ใช้งาน"
+            }`}
             open={popupModal}
             onCancel={() => {
               setEditUsers(null);
