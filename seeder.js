@@ -8,7 +8,6 @@ require("colors");
 dotenv.config();
 connecDb();
 
-//function seeder
 const importData = async () => {
   try {
     await itemModel.deleteMany();
