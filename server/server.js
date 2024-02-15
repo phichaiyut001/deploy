@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const dotanv = require("dotenv");
+const dotenv = require("dotenv");
 const path = require("path");
 const multer = require("multer");
 const { bgCyan } = require("colors");
@@ -10,7 +10,7 @@ const bcrypt = require("bcrypt");
 require("colors");
 const connectDb = require("./config/config");
 //dotenv config
-dotanv.config();
+dotenv.config();
 //db config
 connectDb();
 //rest object
