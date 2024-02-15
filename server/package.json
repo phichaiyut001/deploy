@@ -10,6 +10,7 @@
   "author": "Phichaiyut",
   "license": "MIT",
   "dependencies": {
+    "@vercel/node": "^3.0.19",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "colors": "^1.4.0",

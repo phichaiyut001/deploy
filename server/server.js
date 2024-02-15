@@ -1,33 +1,37 @@
+const express = require("express");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const doenv = require("dotenv");
+const path = require("path");
+const multer = require("multer");
 const { bgCyan } = require("colors");
+const bcrypt = require("bcrypt");
+require("colors");
 const connectDb = require("./config/config");
 //dotenv config
-const dotenv = require("dotenv");
 dotenv.config();
-
 //db config
 connectDb();
-
-// Importing the framework
-const { json } = require("@vercel/node");
-
-// Initializing the express app
-const express = require("express");
+//rest object
 const app = express();
 
-// Middleware
-app.use(require("cors")());
-app.use(require("morgan")("dev"));
+//middlwares
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-// Serve static files
-const path = require("path");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan("dev"));
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
-// Routes
+//routes
 app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/bills", require("./routes/billsRoutes"));
 
-// Set up Vercel endpoint
-module.exports = app;
+//port
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server Running On Port ${PORT}`.bgCyan.white);
+});
