@@ -1,35 +1,33 @@
-const express = require("express");
-const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const path = require("path");
-const multer = require("multer");
 const { bgCyan } = require("colors");
-const bcrypt = require("bcrypt");
-require("colors");
 const connectDb = require("./config/config");
-
 //dotenv config
+const dotenv = require("dotenv");
 dotenv.config();
 
 //db config
 connectDb();
 
-//rest object
+// Importing the framework
+const { json } = require("@vercel/node");
+
+// Initializing the express app
+const express = require("express");
 const app = express();
 
-//middlwares
-app.use(cors());
+// Middleware
+app.use(require("cors")());
+app.use(require("morgan")("dev"));
 app.use(express.json());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
+
+// Serve static files
+const path = require("path");
 app.use("/images", express.static(path.join(__dirname, "public/images")));
 
-//routes
+// Routes
 app.use("/api/items", require("./routes/itemRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/bills", require("./routes/billsRoutes"));
 
+// Set up Vercel endpoint
 module.exports = app;
